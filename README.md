@@ -2,7 +2,7 @@
 
 Welcome candidate and thank you for taking the time to complete the Parallel Domain take-home challenge for our frontend engineer position.
 
-This should take around 4-6 hours. Once you have completed your solution, please reply with a link to a github repository and the website where your application has been deployed. In case the repository is private, please grant access to recruiting-frontend@paralleldomain.com.
+This should take around 4-6 hours. Once you have completed your solution, please reply with a link to a github repository and the website where your application has been deployed. In case the repository is private, please grant access by adding the github user `pd-recruiting-frontend` as a collaborator.
 
 The goal of this challenge is to rebuild the Parallel Domain [jobs](https://paralleldomain.com/join-us) page. Please clone this repository and submit it once you are finished.
 
