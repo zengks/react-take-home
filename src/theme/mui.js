@@ -3,6 +3,15 @@ import { createTheme } from "@mui/material/styles";
 import colors from "./colors";
 
 const mui = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 800,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   palette: {
     primary: {
       main: colors.primary,
@@ -46,6 +55,13 @@ const mui = createTheme({
       lineHeight: 1.2,
       letterSpacing: "-1px",
     },
+    h6: {
+      fontFamily: "Helvetica Neue, Helvetica, Arial, serif",
+      fontSize: ".8rem",
+      color: colors.textLight,
+      lineHeight: 1.2,
+      letterSpacing: "3px",
+    },
     body1: {
       color: colors.textLight,
       lineHeight: 1.4,
@@ -62,6 +78,17 @@ const mui = createTheme({
     },
   },
   components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: colors.textLight,
+          textDecoration: 'none',
+          '&:hover': {
+            color: colors.primary
+          }
+        }
+      }
+    },
     MuiCssBaseline: {
       styleOverrides: {
         body: {
@@ -92,7 +119,20 @@ const mui = createTheme({
           padding: "8px",
           color: colors.textLight,
         },
+        icon: {
+          color: colors.primary,
+        },
+        filled: {
+          color: colors.secondary,
+        }
       },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.secondary,
+        },
+      }
     },
     MuiButton: {
       styleOverrides: {
@@ -101,12 +141,12 @@ const mui = createTheme({
           fontWeight: "bold",
           borderRadius: "30px",
           letterSpacing: "1px",
-          padding: "12px 28px",
+          padding: "0 30px",
+          height: '2.8rem',
         },
         outlinedPrimary: {
           borderWidth: "2px",
           color: colors.primary,
-
           "&:hover": {
             borderWidth: "2px",
           },

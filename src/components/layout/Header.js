@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
 
 // import app components
-import logo from "../icons/logo.svg";
+import logo from "../../icons/logo.svg";
 
 function Header() {
   return (
