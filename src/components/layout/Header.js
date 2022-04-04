@@ -8,7 +8,9 @@ function Header() {
   return (
     <AppBar color="secondary">
       <Toolbar sx={{ maxWidth: "1280px", width: "100%", margin: "0 auto" }}>
-        <img src={logo} alt="Parallel Domain Logo" style={{ width: "140px" }} />
+        <a href="/">
+          <img src={logo} alt="Parallel Domain Logo" style={{ width: "140px" }} />
+        </a>
       </Toolbar>
     </AppBar>
   );

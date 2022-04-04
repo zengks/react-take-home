@@ -1,8 +1,7 @@
-import { Typography, MenuItem, FormControl, Select, Box, Grid } from '@mui/material'
+import { Typography, MenuItem, FormControl, Select, Box, useMediaQuery } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import JobGroups from '../jobs/JobGroups'
-import theme from '../../theme/mui'
 
 function Filter({jobs}) {
 
@@ -48,70 +47,96 @@ function Filter({jobs}) {
     const handleWorkTypeChange = (e) => {
         setSelectedWorkType(e.target.value)
     }
+
+    const widthMatch = useMediaQuery('(max-width: 800px)')
+    
+    let boxStyle
+    let filterStyle
+    let typoStyle
+
+    if(!widthMatch) {
+        boxStyle = {
+            display: 'flex',
+            justifyContent: 'flex-start',
+        }
+        filterStyle = {
+            marginLeft: '1rem',
+            border: '1px solid #81929e',
+            borderRadius: '5px'
+        }
+        typoStyle = {
+            lineHeight: '2.5rem',
+            marginRight: '1rem',
+        }
+
+    } else {
+        boxStyle = {
+            display: 'block',
+        }
+        typoStyle = {
+            margin: '.5rem 0'
+        }
+        filterStyle = {
+            width: '100%',
+            margin: '.7rem 0',
+            border: '1px solid #81929e',
+            borderRadius: '5px'
+        }
+    }
   
   return (
       <>
-        <Box >
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={1.5}>
-                    <Typography sx={{  lineHeight: "2.7rem", marginLeft: "1rem" }}textTransform="uppercase" variant="body2" component="h2">filter by: </Typography>
-                </Grid>
-                    
-                <Grid item xs={12} sm={2}>
-                    <FormControl sx={{ width: "95%", marginLeft: "1rem" }} variant="outlined" color='secondary'>
-                        <Select
-                            autoWidth
-                            labelId='select-location'
-                            id='selectLocation'
-                            value={selectedLocation}
-                            onChange={handleLocationChange}
-                        >
-                            <MenuItem  value="ALL LOCATIONS">ALL LOCATIONS</MenuItem>
-                            {allLocations.map((loc, index) => (
-                                <MenuItem key={index} value={loc}>{loc}</MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                </Grid>
+        <Box sx={boxStyle}>
 
-                <Grid item xs={12} sm={2}>
-                    <FormControl sx={{  width: '95%', marginLeft: "1rem" }} variant="outlined" color='secondary'>
-                        <Select
-                            autoWidth
-                            labelId='select-team'
-                            id='selectTeam'
-                            value={selectedTeam}
-                            onChange={handleTeamChange}
-                        >
-                            <MenuItem value="ALL TEAMS">ALL TEAMS</MenuItem>
-                            {allTeams.map((team, index) => (
-                                <MenuItem key={index} value={team}>{team}</MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                </Grid>
+            <Typography sx={typoStyle} textTransform="uppercase" variant="body2">filter by: </Typography>
+        
+            <FormControl sx={filterStyle} color='secondary'>
+                <Select
+                    autoWidth
+                    labelId='select-location'
+                    id='selectLocation'
+                    value={selectedLocation}
+                    onChange={handleLocationChange}
+                >
+                    <MenuItem value="ALL LOCATIONS">ALL LOCATIONS</MenuItem>
+                    {allLocations.map((loc, index) => (
+                        <MenuItem key={index} value={loc}>{loc}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
 
-                <Grid item xs={12} sm={2.5} >
-                    <FormControl sx={{  width: '95%', marginLeft: "1rem" }} variant="outlined" color='secondary'>
-                        <Select
-                            autoWidth
-                            labelId='select-work-type'
-                            id='selectWorkType'
-                            value={selectedWorkType}
-                            onChange={handleWorkTypeChange}
-                        >
-                            <MenuItem value="ALL WORK TYPES">ALL WORK TYPES</MenuItem>
-                            {allWorkTypes.map((type, index) => (
-                                <MenuItem key={index} value={type}>{type}</MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                </Grid>
-                
-            </Grid>
+            <FormControl sx={filterStyle} color='secondary'>
+                <Select
+                    autoWidth
+                    labelId='select-team'
+                    id='selectTeam'
+                    value={selectedTeam}
+                    onChange={handleTeamChange}
+                >
+                    <MenuItem value="ALL TEAMS">ALL TEAMS</MenuItem>
+                    {allTeams.map((team, index) => (
+                        <MenuItem key={index} value={team}>{team}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+
+            <FormControl sx={filterStyle} color='secondary'>
+                <Select
+                    autoWidth
+                    labelId='select-work-type'
+                    id='selectWorkType'
+                    value={selectedWorkType}
+                    onChange={handleWorkTypeChange}
+                >
+                    <MenuItem value="ALL WORK TYPES">ALL WORK TYPES</MenuItem>
+                    {allWorkTypes.map((type, index) => (
+                        <MenuItem key={index} value={type}>{type}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
         </Box>
 
-        <Box sx={{margin: "6rem 0rem"}}>
+        <Box sx={{margin: "6rem auto"}}>
             <JobGroups 
                 jobs={jobs}
                 selectedLocation={selectedLocation}
@@ -119,9 +144,7 @@ function Filter({jobs}) {
                 selectedWorkType={selectedWorkType}
             />
         </Box>
-
       </>
-    
   )
 }
 

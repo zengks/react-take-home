@@ -3,15 +3,6 @@ import { createTheme } from "@mui/material/styles";
 import colors from "./colors";
 
 const mui = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 800,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
   palette: {
     primary: {
       main: colors.primary,
@@ -124,7 +115,7 @@ const mui = createTheme({
         },
         filled: {
           color: colors.secondary,
-        }
+        },
       },
     },
     MuiPaper: {

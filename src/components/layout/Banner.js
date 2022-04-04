@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import React from 'react'
 
 import bannerImage from '../../images/banner.jpeg'
-import '../css/banner.css';
+import '../styles/banner.css';
 
 function Banner() {
   return (

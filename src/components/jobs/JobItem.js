@@ -1,7 +1,33 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
 
-function JobItem({ jobs, teamName, locationSet, workTypeSet }) {
+function JobItem({ jobs, teamName }) {
+
+  const widthMatch = useMediaQuery('(max-width: 770px)')
+
+  let boxStyle
+  let btnStyle
+
+  if(widthMatch) {
+    boxStyle = {
+      marginBottom: '2rem',
+      borderBottom: 1,
+      display: 'block',      
+    }
+    btnStyle = {
+      marginY: '2.5rem',
+    }
+  } else {
+    boxStyle = {
+      marginBottom: '2rem',
+      borderBottom: 1,
+      display: 'flex',
+      justifyContent: 'space-between',
+    }
+    btnStyle = {
+      marginY: '2rem',
+    }
+  }
 
   return (
     <>
@@ -9,24 +35,17 @@ function JobItem({ jobs, teamName, locationSet, workTypeSet }) {
         <div key={job.id}>
           {job.categories.team === teamName && (
             <Box
-              sx={{
-                marginBottom: '2rem',
-                borderBottom: 1, 
-                display: "flex", 
-                justifyContent: "space-between" }} >
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={10}>
+              sx={boxStyle} >
+                <div>
                   <Typography variant='h3' letterSpacing='1px' marginBottom={1}>{job.text}</Typography>
+                  
                   <Typography variant='h6' textTransform='uppercase' sx={{marginBottom: '0rem', marginTop: '1rem'}}>
                     {job.categories.location} / {job.categories.team}
                   </Typography>
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                  <Button sx={{marginY: '2rem'}} variant="outlined" href={job.applyUrl}>Apply</Button>
-                </Grid>
-              </Grid>
-              
-              
+                </div>
+                
+                <Button sx={btnStyle} variant="outlined" href={job.applyUrl}>Apply</Button>              
+            
             </Box>
           )}
         </div>

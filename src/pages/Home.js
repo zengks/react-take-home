@@ -47,7 +47,7 @@ function Home() {
             Open Positions
           </Typography>
           <Typography
-            sx={{ textAlign: "center", maxWidth: "768px", margin: "0 auto" }}
+            sx={{ textAlign: "center", maxWidth: "768px", margin: "2rem auto" }}
           >
             Our data is training and testing autonomous systems at companies around
             the world. We're looking for talented visionaries to help us to expand
