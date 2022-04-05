@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Box, Typography, Container, useMediaQuery } from "@mui/material";
+import { Box, Typography, Container} from "@mui/material";
 
 import Header from "../components/layout/Header"
 import Banner from "../components/layout/Banner";
-import Filter from "../components/layout/Filter";
+import NewDesignFilter from "../components/layout/NewDesignFilter";
 import LoadingSpinner from "../components/layout/LoadingSpinner";
 
 const LEVER_URL = process.env.REACT_APP_LEVER_URL;
@@ -13,9 +13,6 @@ function Home() {
 
   const [jobs, setJobs] = useState([])
   const [loading, setLoading] = useState(false)
-
-  // media query for medium screen
-  const widthMatch = useMediaQuery('(max-width: 900px)')
 
   useEffect(() => {
     setLoading(true)
@@ -35,18 +32,10 @@ function Home() {
     getJobs()
   }, [])
 
-  let boxStyle
-
-  if(widthMatch) {
-    boxStyle = {margin: 0}
-  } else {
-    boxStyle = {margin: '0 5rem'}
-  }
-
   if(loading) {
     return <LoadingSpinner />
   }
-
+  
   return (
     <>
       <Header />
@@ -65,8 +54,8 @@ function Home() {
           </Typography>
         </Box>
 
-        <Box sx={boxStyle}>
-          <Filter jobs={jobs} />
+        <Box>
+          <NewDesignFilter jobs={jobs} />
         </Box>
         
       </Container>

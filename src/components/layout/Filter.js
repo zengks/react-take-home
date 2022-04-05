@@ -13,7 +13,7 @@ function Filter({ jobs }) {
     const [selectedTeam, setSelectedTeam] = useState('ALL TEAMS')
     const [selectedWorkType, setSelectedWorkType] = useState('ALL WORK TYPES')
 
-    const widthMatch = useMediaQuery('(max-width: 850px)')
+    const widthMatch = useMediaQuery('(max-width: 900px)')
 
     useEffect(() => {
         addFilterInfo(jobs)

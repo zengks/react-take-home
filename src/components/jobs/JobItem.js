@@ -45,7 +45,7 @@ function JobItem({ jobs, teamName }) {
                   </Typography>
                 </div>
                 
-                <Button sx={btnStyle} variant="outlined" href={job.applyUrl}>Apply</Button>              
+                <Button sx={btnStyle} variant="outlined" href={job.applyUrl} target="_blank">Apply</Button>              
             </Box>
           )}
         </div>
