@@ -6,7 +6,14 @@ function LoadingSpinner() {
   return (
     <>
         <Box>
-            <CircularProgress sx={{ position:'absolute', top: '40%', left: '48%', transform: 'translate(-50%, -50%)' }} size="5rem" />
+            <CircularProgress 
+              sx={{ 
+                  position:'absolute', 
+                  top: '40%', 
+                  left: '48%', 
+                  transform: 'translate(-50%, -50%)'
+                  }} 
+              size="5rem" />
         </Box>
     </>
   )

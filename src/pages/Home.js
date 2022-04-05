@@ -1,6 +1,6 @@
-import {  useEffect, useState } from "react";
-import { Box, Typography, Container } from "@mui/material";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { Box, Typography, Container, useMediaQuery } from "@mui/material";
 
 import Header from "../components/layout/Header"
 import Banner from "../components/layout/Banner";
@@ -13,6 +13,9 @@ function Home() {
 
   const [jobs, setJobs] = useState([])
   const [loading, setLoading] = useState(false)
+
+  // media query for medium screen
+  const widthMatch = useMediaQuery('(max-width: 850px)')
 
   useEffect(() => {
     setLoading(true)
@@ -27,16 +30,23 @@ function Home() {
             })
         setTimeout(() => {
           setLoading(false)    
-        }, 500);
+        }, 300);
     }
     getJobs()
   }, [])
+
+  let boxStyle
+
+  if(widthMatch) {
+    boxStyle = {margin: 0}
+  } else {
+    boxStyle = {margin: '0 5rem'}
+  }
 
   if(loading) {
     return <LoadingSpinner />
   }
 
-  
   return (
     <>
       <Header />
@@ -55,10 +65,11 @@ function Home() {
           </Typography>
         </Box>
 
-        <Filter jobs={jobs} />
-
+        <Box sx={boxStyle}>
+          <Filter jobs={jobs} />
+        </Box>
+        
       </Container>
-      
     </>
   );
 }

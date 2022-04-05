@@ -35,7 +35,8 @@ function JobItem({ jobs, teamName }) {
         <div key={job.id}>
           {job.categories.team === teamName && (
             <Box
-              sx={boxStyle} >
+              sx={boxStyle}
+            >
                 <div>
                   <Typography variant='h3' letterSpacing='1px' marginBottom={1}>{job.text}</Typography>
                   
@@ -45,7 +46,6 @@ function JobItem({ jobs, teamName }) {
                 </div>
                 
                 <Button sx={btnStyle} variant="outlined" href={job.applyUrl}>Apply</Button>              
-            
             </Box>
           )}
         </div>

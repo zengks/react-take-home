@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react'
+import { Box, Typography } from '@mui/material';
 
 import bannerImage from '../../images/banner.jpeg'
 import '../styles/banner.css';
@@ -16,8 +16,7 @@ function Banner() {
             />
             <Typography
                 sx={{ position: "absolute" }}
-                variant="h1" 
-                component="h2"
+                variant="h1"
                 className='banner-text'
             >
                 Join Us

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import JobGroups from '../jobs/JobGroups'
 
-function Filter({jobs}) {
+function Filter({ jobs }) {
 
     const [allLocations, setAllLocations] = useState([])
     const [allTeams, setAllTeams] = useState([])
@@ -13,10 +13,13 @@ function Filter({jobs}) {
     const [selectedTeam, setSelectedTeam] = useState('ALL TEAMS')
     const [selectedWorkType, setSelectedWorkType] = useState('ALL WORK TYPES')
 
+    const widthMatch = useMediaQuery('(max-width: 850px)')
+
     useEffect(() => {
         addFilterInfo(jobs)
     }, [jobs])
     
+    // add dynamic info to select filters
     const addFilterInfo = (jobs) => {
         let locs = []
         let teams = []
@@ -33,7 +36,6 @@ function Filter({jobs}) {
         setAllLocations([...new Set(locs)])
         setAllTeams([...new Set(teams)])
         setAllWorkTypes([...new Set(types)])
-
     }
 
     const handleLocationChange = (e) => {
@@ -48,8 +50,6 @@ function Filter({jobs}) {
         setSelectedWorkType(e.target.value)
     }
 
-    const widthMatch = useMediaQuery('(max-width: 800px)')
-    
     let boxStyle
     let filterStyle
     let typoStyle
@@ -68,8 +68,7 @@ function Filter({jobs}) {
             lineHeight: '2.5rem',
             marginRight: '1rem',
         }
-
-    } else {
+    }else {
         boxStyle = {
             display: 'block',
         }
@@ -83,14 +82,13 @@ function Filter({jobs}) {
             borderRadius: '5px'
         }
     }
-  
+
   return (
       <>
         <Box sx={boxStyle}>
-
             <Typography sx={typoStyle} textTransform="uppercase" variant="body2">filter by: </Typography>
         
-            <FormControl sx={filterStyle} color='secondary'>
+            <FormControl sx={filterStyle}>
                 <Select
                     autoWidth
                     labelId='select-location'
@@ -105,7 +103,7 @@ function Filter({jobs}) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={filterStyle} color='secondary'>
+            <FormControl sx={filterStyle}>
                 <Select
                     autoWidth
                     labelId='select-team'
@@ -120,7 +118,7 @@ function Filter({jobs}) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={filterStyle} color='secondary'>
+            <FormControl sx={filterStyle}>
                 <Select
                     autoWidth
                     labelId='select-work-type'
